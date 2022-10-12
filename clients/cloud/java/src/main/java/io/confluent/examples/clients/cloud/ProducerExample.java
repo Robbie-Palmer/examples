@@ -105,7 +105,8 @@ public class ProducerExample {
     producer.close();
   }
 
-  public static Properties loadConfig(final String configFile) throws IOException {
+  public static Properties loadConfig(String configFile) throws IOException {
+    configFile = configFile.replaceFirst("^~", System.getProperty("user.home"));
     if (!Files.exists(Paths.get(configFile))) {
       throw new IOException(configFile + " not found.");
     }
